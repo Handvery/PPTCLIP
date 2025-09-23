@@ -15,6 +15,7 @@ from tqdm import tqdm
 
 # ===== project‑specific utils =====
 from utils import (
+    set_dataset_aigc,
     set_dataset_aigc_3k, _preprocess2, _preprocess3,
     convert_models_to_fp32, get_logger, log_and_print,
 )
@@ -217,12 +218,12 @@ def main():
     # 使用两组提示词初始化
     model = CustomCLIP(clip_model, content_quality_words, pure_quality_words, n_ctx).to(device)
 
-    root = "./Database/AGIQA-3K"; session = now_session
-    train_loader = set_dataset_aigc_3k(os.path.join(root, str(session), "train.csv"), bs,
-                                    "/home/data/wpy/IPCE-main/data/AGIQA-3K/file",
+    root = "./Database/AGIQA-1K"; session = now_session
+    train_loader = set_dataset_aigc(os.path.join(root, str(session), "train.csv"), bs,
+                                    "/home/data/wpy/IPCE-main/data/AGIQA-1K/file",
                                     num_workers, preprocess3, train_patch-1, False)
-    val_loader   = set_dataset_aigc_3k(os.path.join(root, str(session), "val.csv"), bs,
-                                    "/home/data/wpy/IPCE-main/data/AGIQA-3K/file",
+    val_loader   = set_dataset_aigc(os.path.join(root, str(session), "val.csv"), bs,
+                                    "/home/data/wpy/IPCE-main/data/AGIQA-1K/file",
                                     num_workers, preprocess2, train_patch-1, True)
 
     optimizer = torch.optim.AdamW(param_groups_lr(model), weight_decay=1e-3)
