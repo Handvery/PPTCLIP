@@ -7,4 +7,4 @@ The code is based on the paper: **Progressive Prompt Tuning with CLIP for Semant
 
 ## 🌈 Visual Results
 Here are several visual results of the comparison between our method and the ground truth MOS:
-![image](https://github.com/Handvery/PPTCLIP/blob/main/score_new.pdf)
+![image](https://github.com/Handvery/PPTCLIP/blob/main/score_new_01.png)
